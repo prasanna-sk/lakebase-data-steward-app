@@ -5,12 +5,10 @@
 ### ✅ Clone Repository
 - [ ] Clone the GitHub repository:
   ```bash
-  git clone https://github.com/your-org/lakebase-data-steward-app.git
+  git clone https://github.com/prasanna-sk/lakebase-data-steward-app.git
   cd lakebase-data-steward-app
   ```
 - [ ] Verify all files are present (app.py, app.yaml, requirements.txt, README.md)
-
-> **Note**: When this becomes available as a public GitHub repository, you'll clone from the official repository URL.
 
 ## Step 1: Create Lakebase Database Instance ✅
 

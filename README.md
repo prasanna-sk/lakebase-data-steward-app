@@ -27,11 +27,9 @@ A configurable, reusable data editor portal that can be deployed to any Lakebase
 Clone this repository to get the Lakebase Data Stewardship Portal source code:
 
 ```bash
-git clone https://github.com/your-org/lakebase-data-steward-app.git
+git clone https://github.com/prasanna-sk/lakebase-data-steward-app.git
 cd lakebase-data-steward-app
 ```
-
-> **Note**: When this becomes available as a public GitHub repository, you'll clone from the official repository URL.
 
 ### Step 1: Create Lakebase Database Instance
 
