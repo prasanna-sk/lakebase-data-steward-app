@@ -1,0 +1,41 @@
+command: ["python", "app.py"]
+
+# Environment Variables for Lakebase Configuration
+# Configure these variables according to your Lakebase instance
+env:
+  # Lakebase Instance Configuration (get these after creating your Lakebase instance)
+  - name: 'LAKEBASE_INSTANCE_NAME'
+    value: 'your_lakebase_instance_name'
+  - name: 'LAKEBASE_INSTANCE_ID'
+    value: 'your_lakebase_instance_id'
+
+  # PostgreSQL Connection Settings (derived from Lakebase instance)
+  - name: 'PGDATABASE'
+    value: 'databricks_postgres'  # Database name when Lakebase is added as app resource
+  - name: 'PGUSER'
+    value: 'your-service-principal-id'
+  - name: 'PGHOST'
+    value: 'your-lakebase-hostname.databricks.com'  # Your Lakebase instance hostname (NOT workspace URL)
+  - name: 'PGPORT'
+    value: '5432'
+  - name: 'PGSSLMODE'
+    value: 'require'
+  - name: 'PGAPPNAME'
+    value: 'your-app-name'  # Should match your Databricks app name
+
+  # Database Configuration
+  - name: 'DEFAULT_SCHEMA'
+    value: 'your_schema_name'  # Schema name from SQL setup
+
+  # Application Settings
+  - name: 'APP_TITLE'
+    value: 'MDM - Data Stewardship Portal'
+  - name: 'COMPANY_NAME'
+    value: 'Your Company Name'
+  - name: 'LOGO_URL'
+    value: 'https://cdn.bfldr.com/9AYANS2F/at/xmmrtc5gg9vctkpj3t6fxvj8/primary-icon-navy-data-quality-3.svg?auto=webp'
+
+# Resources (adjust based on your needs)
+resources:
+  cpu: "1"
+  memory: "2Gi"
