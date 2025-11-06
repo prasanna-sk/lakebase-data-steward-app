@@ -540,6 +540,10 @@ For issues or questions:
 
 This is a reusable template for data stewardship applications. Customize as needed for your organization.
 
+### ⚠️ Educational Use Disclaimer
+
+This repository is purely for educational purposes and to get hands-on experience with Databricks Apps and Lakebase implementation. The repo is not meant to be used in Production.
+
 ---
 
 **🎉 Your Lakebase Data Stewardship Portal is ready to use!**
