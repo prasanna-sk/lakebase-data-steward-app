@@ -12,6 +12,80 @@ A configurable, reusable data editor portal that can be deployed to any Lakebase
 - **🎨 Configurable Branding**: Customize logo, title, and company name
 - **🔐 OAuth Integration**: Secure authentication using Databricks OAuth tokens
 
+## 📸 Screenshots
+
+### 🏠 Home Screen & Navigation
+<details>
+<summary>Click to view Home Screen</summary>
+
+[![Home Screen](assets/1-HomeScreen.png)](assets/1-HomeScreen.png)
+*Clean, branded interface with configurable logo and company name*
+
+</details>
+
+### 🔄 Dynamic Schema & Table Discovery
+<details>
+<summary>Click to view Schema & Table Selection</summary>
+
+[![Schema Table Selection](assets/2-Schema-TableSelection.png)](assets/2-Schema-TableSelection.png)
+*Automatically discovers and lists all schemas and tables you have access to*
+
+</details>
+
+### 📊 Data Grid & CRUD Operations
+<details>
+<summary>Click to view Main Data Grid</summary>
+
+[![Data Grid](assets/3-DataGrid.png)](assets/3-DataGrid.png)
+*Complete data management interface with Add Row, Edit Data, and Save Changes functionality*
+
+</details>
+
+### 🔍 Advanced Search
+<details>
+<summary>Click to view Search Functionality</summary>
+
+[![Search Functionality](assets/6-Search.png)](assets/6-Search.png)
+*Global search with cell highlighting across all columns*
+
+</details>
+
+### 🎯 Dynamic Filtering
+<details>
+<summary>Click to view Status Filtering</summary>
+
+[![Status Filtering](assets/7-Filters.png)](assets/7-Filters.png)
+*Filter data by status values with result count display*
+
+</details>
+
+### ✏️ Smart Edit Workflow
+<details>
+<summary>Click to view Edit Confirmation</summary>
+
+[![Edit Confirmation](assets/4-EditsConfirm.png)](assets/4-EditsConfirm.png)
+*Confirmation dialogs for data changes with change summary*
+
+</details>
+
+### 🎨 Visual Change Tracking
+<details>
+<summary>Click to view Edit Colors & Audit</summary>
+
+[![Edit Colors and Audit](assets/5-EditsColors-audit.png)](assets/5-EditsColors-audit.png)
+*Color-coded changes with real-time audit trail integration*
+
+</details>
+
+### 📋 Comprehensive Audit Trail
+<details>
+<summary>Click to view Audit Tracking</summary>
+
+[![Audit Tracking](assets/8-AuditTracking.png)](assets/8-AuditTracking.png)
+*Complete audit log with user attribution, timestamps, and before/after values*
+
+</details>
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -69,10 +143,10 @@ CREATE SCHEMA IF NOT EXISTS your_schema_name;
 - After schema creation succeeds, manually change the schema dropdown (above the query editor) to: `databricks_postgres.your_schema_name`
 - This sets the context for all subsequent operations
 
-#### 3. **Create Tables** (execute one at a time, no schema prefix needed):
+#### 3. **Create Tables** (copy and paste the entire block below):
 
-**Customer Information Table:**
 ```sql
+-- Customer Information Table
 CREATE TABLE IF NOT EXISTS customer_info (
     customer_id SERIAL PRIMARY KEY,
     first_name VARCHAR(100) NOT NULL,
@@ -88,10 +162,8 @@ CREATE TABLE IF NOT EXISTS customer_info (
     created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-```
 
-**Location/Facility Information Table:**
-```sql
+-- Location/Facility Information Table
 CREATE TABLE IF NOT EXISTS locations (
     location_id SERIAL PRIMARY KEY,
     location_name VARCHAR(200) NOT NULL,
@@ -110,10 +182,8 @@ CREATE TABLE IF NOT EXISTS locations (
     created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-```
 
-**Product Information Table:**
-```sql
+-- Product Information Table
 CREATE TABLE IF NOT EXISTS products (
     product_id SERIAL PRIMARY KEY,
     product_name VARCHAR(200) NOT NULL,
@@ -127,10 +197,8 @@ CREATE TABLE IF NOT EXISTS products (
     created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-```
 
-**Audit Trail Table:**
-```sql
+-- Audit Trail Table (tracks all data changes)
 CREATE TABLE IF NOT EXISTS data_steward_audit (
     audit_id SERIAL PRIMARY KEY,
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -144,10 +212,10 @@ CREATE TABLE IF NOT EXISTS data_steward_audit (
 );
 ```
 
-#### 4. **Insert Sample Data** (Optional - execute one at a time):
+#### 4. **Insert Sample Data** (Optional - copy and paste the entire block below):
 
-**Sample Customers:**
 ```sql
+-- Sample Customer Data
 INSERT INTO customer_info
 (first_name, last_name, email, phone, address, city, state, zip_code, country, status)
 VALUES
@@ -156,10 +224,8 @@ VALUES
 ('Mike', 'Johnson', 'mike.johnson@company.com', '555-0103', '789 Pine St', 'Aurora', 'CO', '80012', 'USA', 'Inactive'),
 ('Sarah', 'Williams', 'sarah.williams@company.com', '555-0104', '321 Elm Dr', 'Lakewood', 'CO', '80226', 'USA', 'Active'),
 ('David', 'Brown', 'david.brown@company.com', '555-0105', '654 Maple Ln', 'Thornton', 'CO', '80229', 'USA', 'Pending');
-```
 
-**Sample Locations:**
-```sql
+-- Sample Location Data
 INSERT INTO locations
 (location_name, address, city, state, zip_code, country, location_type, region, status, manager_name, phone, email, capacity)
 VALUES
@@ -167,10 +233,8 @@ VALUES
 ('Boulder Distribution Center', '456 Logistics Ave', 'Boulder', 'CO', '80301', 'USA', 'Warehouse', 'Mountain West', 'Active', 'Susan Chen', '303-555-0202', 'susan.chen@company.com', 75000),
 ('Corporate Headquarters', '789 Executive Dr', 'Broomfield', 'CO', '80020', 'USA', 'Office', 'Mountain West', 'Active', 'James Wilson', '303-555-0203', 'james.wilson@company.com', 1000),
 ('Aurora Facility', '321 Production Way', 'Aurora', 'CO', '80012', 'USA', 'Factory', 'Mountain West', 'Active', 'Maria Rodriguez', '303-555-0204', 'maria.rodriguez@company.com', 40000);
-```
 
-**Sample Products:**
-```sql
+-- Sample Product Data
 INSERT INTO products
 (product_name, sku, category, description, unit_price, stock_quantity, supplier_id, status)
 VALUES
@@ -290,20 +354,16 @@ Now grant permissions to the service principal from Step 4:
    - `your_schema_name` → your actual schema name (same as Step 2)
    - `your-service-principal-id` → actual service principal ID from Step 4
 
-2. **Execute the GRANT Statements** (one at a time):
+2. **Execute the GRANT Statements** (copy and paste the entire block below):
 
-**Schema permissions:**
 ```sql
+-- Schema permissions (required for basic access)
 GRANT USAGE ON SCHEMA your_schema_name TO "your-service-principal-id";
-```
 
-**Table permissions:**
-```sql
+-- Table permissions (required for CRUD operations)
 GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA your_schema_name TO "your-service-principal-id";
-```
 
-**Sequence permissions (for auto-increment fields):**
-```sql
+-- Sequence permissions (required for auto-increment fields and audit trail)
 GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA your_schema_name TO "your-service-principal-id";
 ```
 
